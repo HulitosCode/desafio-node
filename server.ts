@@ -9,7 +9,7 @@ import { fastifySwagger } from "@fastify/swagger";
 import { createCoursesRoute } from "./src/routes/create-course.ts";
 import { getCoursesRoute } from "./src/routes/get-coureses.ts";
 import { getCourseByIdRoute } from "./src/routes/get-course-by-id.ts";
-import scalarAPIReference from "@scalar/fastify-api-reference"
+import scalarAPIReference from "@scalar/fastify-api-reference";
 
 const app = fastify({
   logger: {
@@ -23,22 +23,24 @@ const app = fastify({
   },
 }).withTypeProvider();
 
-app.setValidatorCompiler(validatorCompiler);
-app.setSerializerCompiler(serializerCompiler);
+if (process.env.NODE_ENV === "development") {
+  app.setValidatorCompiler(validatorCompiler);
+  app.setSerializerCompiler(serializerCompiler);
 
-app.register(fastifySwagger, {
-  openapi: {
-    info: {
-      title: "Desafio Node.js",
-      version: "1.0.0",
+  app.register(fastifySwagger, {
+    openapi: {
+      info: {
+        title: "Desafio Node.js",
+        version: "1.0.0",
+      },
     },
-  },
-  transform: jsonSchemaTransform,
-});
+    transform: jsonSchemaTransform,
+  });
 
-app.register(scalarAPIReference, {
-  routePrefix: "/docs",
-});
+  app.register(scalarAPIReference, {
+    routePrefix: "/docs",
+  });
+}
 
 app.register(createCoursesRoute);
 app.register(getCoursesRoute);
