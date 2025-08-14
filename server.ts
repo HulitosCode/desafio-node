@@ -1,55 +1,53 @@
-import { randomUUID } from "crypto"
-import fastify from "fastify"
+import fastify from "fastify";
+
+import {
+  validatorCompiler,
+  serializerCompiler,
+  jsonSchemaTransform,
+} from "fastify-type-provider-zod";
+import { fastifySwagger } from "@fastify/swagger";
+import { createCoursesRoute } from "./src/routes/create-course.ts";
+import { getCoursesRoute } from "./src/routes/get-coureses.ts";
+import { getCourseByIdRoute } from "./src/routes/get-course-by-id.ts";
+import scalarAPIReference from "@scalar/fastify-api-reference"
 
 const app = fastify({
-    logger: true
-})
-
-const courses = [
-    {
-        id: "1",
-        title: "DEV Front"
+  logger: {
+    transport: {
+      target: "pino-pretty", //pino-pretty é um formatador de logs  usado pelo Fastify
+      options: {
+        translateTime: "HH:MM:ss Z",
+        ignore: "pid, hostname",
+      },
     },
-    {
-        id: "2",
-        title: "DEV Back"
-    }
-]
+  },
+}).withTypeProvider();
 
-app.get('/courses', () => {
-    return {courses}
-})
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
 
-app.get('/courses/:id', (request, reply) => {
-    const courseId = request.params.id
+app.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: "Desafio Node.js",
+      version: "1.0.0",
+    },
+  },
+  transform: jsonSchemaTransform,
+});
 
-    const course = courses.find(course => course.id === courseId)
+app.register(scalarAPIReference, {
+  routePrefix: "/docs",
+});
 
-    if (course) {
-        return { course }
-    }
+app.register(createCoursesRoute);
+app.register(getCoursesRoute);
+app.register(getCourseByIdRoute);
 
-    return reply.status(404).send()
-})
-
-app.post('/courses', (request, reply) => {
-    const courseId = crypto.randomUUID()
-    const courseTitle = request.body.title
-
-    if (!courseTitle) {
-        return reply.status(400).send({ message: 'Titulo e obrigatorio'})
-    }
-    courses.push({
-        id: courseId, title: courseTitle
-    })
-    return reply.status(201).send({ courseId, courseTitle })
-})
-
-
-app.listen({
-    port: 3333
-}).then(
-    () => {
-        console.log('HTTP server running')
-    }
-)
+app
+  .listen({
+    port: 3333,
+  })
+  .then(() => {
+    console.log("HTTP server running");
+  });

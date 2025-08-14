@@ -6,8 +6,8 @@ POST http://localhost:3333/courses
 Content-Type: application/json
 
 {
-    "title": "Curos FullStack"
+    "title": "Curos FullStack2"
 }
 
 ### 
-GET http://localhost:3333/courses/979bf8cb-7cb0-4e72-abe4-207c4506bca8
+GET http://localhost:3333/courses/01d2605c-53f4-4c93-92cb-29d9942645cc

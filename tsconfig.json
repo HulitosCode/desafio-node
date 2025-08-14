@@ -7,6 +7,8 @@
     "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
     "module": "nodenext",
     "target": "es2022",
+    "allowImportingTsExtensions": true, //Permit que os arquivos sejam importado com extensao ts no final
+    "noEmit": true, //Estou dizendo para nao converter o codigo para javascript porque o node suporta Typescript
 
     "strict": true,
     "esModuleInterop": true,
