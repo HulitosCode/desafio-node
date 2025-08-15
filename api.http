@@ -13,16 +13,22 @@ POST http://localhost:3333/courses
 Content-Type: application/json
 
 {
-    "title": "Curso Node"
+    "title": "Curso Nodejs"
 }
 
 ### 
 
 // Get Course By Id
-GET http://localhost:3333/courses/01d2605c-53f4-4c93-92cb-29d9942645cc
+GET http://localhost:3333/courses/997a0ab9-b9ea-4036-b4a6-1d543fe6121c
 
 ###
 
 //Get Title orderBy Id and title
 
 GET http://localhost:3333/courses?orderBy=title
+
+###
+
+//Get Pagination
+
+GET http://localhost:3333/courses?orderBy=title&page=2
