@@ -31,4 +31,4 @@ GET http://localhost:3333/courses?orderBy=title
 
 //Get Pagination
 
-GET http://localhost:3333/courses?orderBy=title&page=2
+GET http://localhost:3333/courses?orderBy=title&page=3
