@@ -1,13 +1,28 @@
+// Search courses 
+GET http://localhost:3333/courses?search=node
+
+###
+
+// Get All courses
 GET http://localhost:3333/courses
 
 ###
 
+// Create courses
 POST http://localhost:3333/courses
 Content-Type: application/json
 
 {
-    "title": "Curos FullStack2"
+    "title": "Curso Node"
 }
 
 ### 
+
+// Get Course By Id
 GET http://localhost:3333/courses/01d2605c-53f4-4c93-92cb-29d9942645cc
+
+###
+
+//Get Title orderBy Id and title
+
+GET http://localhost:3333/courses?orderBy=title
