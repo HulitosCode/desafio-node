@@ -14,7 +14,7 @@ async function seed() {
 
   const coursesInsert = await db
     .insert(courses)
-    .values([{ title: faker.lorem.words(4) }, { title: faker.lorem.words(4) }])
+    .values([{ title: faker.lorem.words(4) }, { title: faker.lorem.words(6) }])
     .returning();
 
   await db.insert(enrollments).values([

@@ -11,6 +11,7 @@ import scalarAPIReference from "@scalar/fastify-api-reference";
 import { createCoursesRoute } from "./routes/create-course.ts";
 import { getCoursesRoute } from "./routes/get-coureses.ts";
 import { getCourseByIdRoute } from "./routes/get-course-by-id.ts";
+import { ZodTypeProvider } from "fastify-type-provider-zod";
 
 const app = fastify({
   logger: {
@@ -22,12 +23,9 @@ const app = fastify({
       },
     },
   },
-}).withTypeProvider();
+}).withTypeProvider<ZodTypeProvider>();
 
 if (process.env.NODE_ENV === "development") {
-  app.setValidatorCompiler(validatorCompiler);
-  app.setSerializerCompiler(serializerCompiler);
-
   app.register(fastifySwagger, {
     openapi: {
       info: {
@@ -43,9 +41,11 @@ if (process.env.NODE_ENV === "development") {
   });
 }
 
+app.setValidatorCompiler(validatorCompiler);
+app.setSerializerCompiler(serializerCompiler);
+
 app.register(createCoursesRoute);
 app.register(getCoursesRoute);
 app.register(getCourseByIdRoute);
 
-
-export { app }
+export { app };

@@ -14,15 +14,17 @@ export const courses = pgTable("courses", {
   description: text(),
 });
 
-export const enrollments = pgTable("enrollments", {
-  id: uuid().primaryKey().defaultRandom(),
-  userId: uuid()
-    .notNull()
-    .references(() => users.id),
-  courseId: uuid()
-    .notNull()
-    .references(() => courses.id),
-  createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
-}, table => [
-  uniqueIndex().on(table.userId, table.courseId)
-]);
+export const enrollments = pgTable(
+  "enrollments",
+  {
+    id: uuid().primaryKey().defaultRandom(),
+    userId: uuid()
+      .notNull()
+      .references(() => users.id),
+    courseId: uuid()
+      .notNull()
+      .references(() => courses.id),
+    createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [uniqueIndex().on(table.userId, table.courseId)],
+);
