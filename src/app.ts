@@ -6,10 +6,11 @@ import {
   jsonSchemaTransform,
 } from "fastify-type-provider-zod";
 import { fastifySwagger } from "@fastify/swagger";
-import { createCoursesRoute } from "./src/routes/create-course.ts";
-import { getCoursesRoute } from "./src/routes/get-coureses.ts";
-import { getCourseByIdRoute } from "./src/routes/get-course-by-id.ts";
+
 import scalarAPIReference from "@scalar/fastify-api-reference";
+import { createCoursesRoute } from "./routes/create-course.ts";
+import { getCoursesRoute } from "./routes/get-coureses.ts";
+import { getCourseByIdRoute } from "./routes/get-course-by-id.ts";
 
 const app = fastify({
   logger: {
@@ -46,10 +47,5 @@ app.register(createCoursesRoute);
 app.register(getCoursesRoute);
 app.register(getCourseByIdRoute);
 
-app
-  .listen({
-    port: 3333,
-  })
-  .then(() => {
-    console.log("HTTP server running");
-  });
+
+export { app }
