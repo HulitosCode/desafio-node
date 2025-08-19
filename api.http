@@ -2,12 +2,10 @@
 GET http://localhost:3333/courses?search=node
 
 ###
-
 // Get All courses
 GET http://localhost:3333/courses
 
 ###
-
 // Create courses
 POST http://localhost:3333/courses
 Content-Type: application/json
@@ -17,18 +15,23 @@ Content-Type: application/json
 }
 
 ### 
-
 // Get Course By Id
 GET http://localhost:3333/courses/997a0ab9-b9ea-4036-b4a6-1d543fe6121c
 
 ###
-
 //Get Title orderBy Id and title
-
 GET http://localhost:3333/courses?orderBy=title
 
 ###
-
 //Get Pagination
-
 GET http://localhost:3333/courses?orderBy=title&page=3
+
+###
+// Login
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "Matias_Assuncao83@hotmail.com",
+    "password": "123456"
+}
