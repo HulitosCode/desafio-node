@@ -1,4 +1,4 @@
-import { expect, test } from "vitest"
+import { afterAll, expect, test } from "vitest"
 import request from "supertest"
 import { app } from "../app.ts"
 import { makeUser } from "../test/factories/make-user.ts"
@@ -20,4 +20,8 @@ test('login', async () => {
     expect(response.body).toEqual({
         token: expect.any(String),
     })
+})
+
+afterAll(async () => {
+    await app.close()
 })

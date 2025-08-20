@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { afterAll, expect, test } from "vitest";
 import request from "supertest";
 import { app } from "../app.ts";
 import { makeCourse } from "../test/factories/make-course.ts";
@@ -22,7 +22,8 @@ test("Get a course By Id", async () => {
       description: null,
     },
   });
-});
+}
+);
 
 
 
@@ -38,3 +39,7 @@ test("Test return 404 for non existing courses", async () => {
 
   expect(response.status).toEqual(404);
 });
+
+afterAll(async () => {
+  await app.close()
+})
