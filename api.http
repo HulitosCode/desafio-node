@@ -9,14 +9,16 @@ GET http://localhost:3333/courses
 // Create courses
 POST http://localhost:3333/courses
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YzZmMTIwNS03NTllLTRhOTgtYWYyNC00MjFhNzg3MzdkNWYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc1NTYxMTQ0NywiZXhwIjoxNzU2MjE2MjQ3fQ.BfEWUJ9kq_YXiRVbDyx0HtuYswyeErWt3hdDsroKMgQ
 
 {
-    "title": "Curso Nodejs"
+    "title": "Curso Nodejs vid"
 }
 
 ### 
 // Get Course By Id
-GET http://localhost:3333/courses/997a0ab9-b9ea-4036-b4a6-1d543fe6121c
+GET http://localhost:3333/courses/2733a765-93a8-4c36-9aec-b0d7492b3919
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YzZmMTIwNS03NTllLTRhOTgtYWYyNC00MjFhNzg3MzdkNWYiLCJyb2xlIjoic3R1ZGVudCIsImlhdCI6MTc1NTYwOTY0NCwiZXhwIjoxNzU2MjE0NDQ0fQ.34zaiK47sSj6rqcoO5eLkb7U-VZD3C84fHwHOGqFrNk
 
 ###
 //Get Title orderBy Id and title
