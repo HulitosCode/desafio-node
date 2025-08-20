@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1755673374608" clover="3.2.0">
-  <project timestamp="1755673374612" name="All files">
-    <metrics statements="406" coveredstatements="304" conditionals="32" coveredconditionals="17" methods="14" coveredmethods="10" elements="452" coveredelements="331" complexity="0" loc="406" ncloc="406" packages="7" files="16" classes="16"/>
+<coverage generated="1755674345901" clover="3.2.0">
+  <project timestamp="1755674345902" name="All files">
+    <metrics statements="408" coveredstatements="304" conditionals="32" coveredconditionals="17" methods="14" coveredmethods="10" elements="454" coveredelements="331" complexity="0" loc="408" ncloc="408" packages="7" files="16" classes="16"/>
     <package name="desafio-node">
-      <metrics statements="25" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="27" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="drizzle.config.ts" path="/home/helton/Projectos/desafio-node/drizzle.config.ts">
         <metrics statements="12" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
@@ -20,7 +20,7 @@
         <line num="14" count="0" type="stmt"/>
       </file>
       <file name="vitest-config.ts" path="/home/helton/Projectos/desafio-node/vitest-config.ts">
-        <metrics statements="13" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="15" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -34,6 +34,8 @@
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
       </file>
     </package>
     <package name="desafio-node.src">

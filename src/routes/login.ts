@@ -6,8 +6,6 @@ import { eq } from "drizzle-orm";
 import { verify } from "argon2";
 import jwt from "jsonwebtoken";
 
-
-
 export const loginRoute: FastifyPluginAsyncZod = async (app) => {
   app.post(
     "/sessions",
@@ -16,8 +14,8 @@ export const loginRoute: FastifyPluginAsyncZod = async (app) => {
         tags: ["auth"],
         summary: "login",
         body: z.object({
-            email: z.email(),
-            password: z.string(),
+          email: z.email(),
+          password: z.string(),
         }),
         response: {
           200: z.object({ token: z.string() }),
@@ -26,34 +24,34 @@ export const loginRoute: FastifyPluginAsyncZod = async (app) => {
       },
     },
     async (request, reply) => {
-      const { email, password } = request.body
+      const { email, password } = request.body;
 
       const result = await db
         .select()
         .from(users)
-        .where(eq(users.email, email))
-        
-        if (result.length === 0) {
-            return reply.status(400).send({ message: ' Credenciais invalida'})
-        }
-        
-        const user = result[0]
+        .where(eq(users.email, email));
 
-        const doesPasswordMatch = await verify(user.password, password)
+      if (result.length === 0) {
+        return reply.status(400).send({ message: "Credenciais invalida" });
+      }
 
-        if (!doesPasswordMatch) {
-            return reply.status(400).send({ message: ' Credenciais invalida'})
-        }
-      
+      const user = result[0];
+
+      const doesPasswordMatch = await verify(user.password, password);
+
+      if (!doesPasswordMatch) {
+        return reply.status(400).send({ message: "Credenciais invalida" });
+      }
+
       if (!process.env.JWT_SECRET) {
-        throw new Error('JWT_SECRET must be set')
+        throw new Error("JWT_SECRET must be set");
       }
 
       const token = jwt.sign(
         { sub: user.id, role: user.role },
         process.env.JWT_SECRET,
-        { expiresIn: '7d' }
-      )
+        { expiresIn: "7d" },
+      );
 
       return reply.status(200).send({ token });
     },

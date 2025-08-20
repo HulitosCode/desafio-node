@@ -4,8 +4,7 @@ import { courses, enrollments, users } from "./schema.ts";
 import { fakerPT_PT as faker } from "@faker-js/faker";
 
 async function seed() {
-
-  const passwordHash = await hash('123456')
+  const passwordHash = await hash("123456");
 
   const usersInsert = await db
     .insert(users)
@@ -14,19 +13,19 @@ async function seed() {
         name: faker.person.fullName(),
         email: faker.internet.email(),
         password: passwordHash,
-        role: 'student',
+        role: "student",
       },
       {
         name: faker.person.fullName(),
         email: faker.internet.email(),
         password: passwordHash,
-        role: 'student',
+        role: "student",
       },
       {
         name: faker.person.fullName(),
         email: faker.internet.email(),
         password: passwordHash,
-        role: 'student',
+        role: "student",
       },
     ])
     .returning();

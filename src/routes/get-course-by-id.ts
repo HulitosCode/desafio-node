@@ -10,9 +10,7 @@ export const getCourseByIdRoute: FastifyPluginAsyncZod = async (server) => {
   server.get(
     "/courses/:id",
     {
-      preHandler: [
-        checkRequestJWT,
-      ],
+      preHandler: [checkRequestJWT],
       schema: {
         tags: ["courses"],
         summary: "Get course by ID",
@@ -32,7 +30,7 @@ export const getCourseByIdRoute: FastifyPluginAsyncZod = async (server) => {
       },
     },
     async (request, reply) => {
-      const user = getAuthenticationUserFromRequest(request)
+      const user = getAuthenticationUserFromRequest(request);
 
       const courseId = request.params.id;
 

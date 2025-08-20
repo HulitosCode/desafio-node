@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
@@ -8,9 +8,9 @@ export default defineConfig({
     hookTimeout: 15000, // também aumenta hooks como beforeAll
     coverage: {
       enabled: true,
-      provider: 'v8',
-      reporter: ['text', 'text-summary', 'html'],
-      reportsDirectory: './coverage'
+      provider: "v8",
+      reporter: ["text", "text-summary", "html"],
+      reportsDirectory: "./coverage",
     },
   },
-})
+});

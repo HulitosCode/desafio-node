@@ -1,27 +1,27 @@
-import { afterAll, expect, test } from "vitest"
-import request from "supertest"
-import { app } from "../app.ts"
-import { makeUser } from "../test/factories/make-user.ts"
+import { afterAll, expect, test } from "vitest";
+import request from "supertest";
+import { app } from "../app.ts";
+import { makeUser } from "../test/factories/make-user.ts";
 
-test('login', async () => {
-    await app.ready()
+test("login", async () => {
+  await app.ready();
 
-    const { user, passwordBeforeHash } = await makeUser()
+  const { user, passwordBeforeHash } = await makeUser();
 
-    const response = await request(app.server)
-        .post('/sessions')
-        .set('Content-Type', 'application/json')
-        .send({
-            email: user.email,
-            password: passwordBeforeHash,
-        })
-    
-    expect(response.status).toEqual(200)
-    expect(response.body).toEqual({
-        token: expect.any(String),
-    })
-})
+  const response = await request(app.server)
+    .post("/sessions")
+    .set("Content-Type", "application/json")
+    .send({
+      email: user.email,
+      password: passwordBeforeHash,
+    });
+
+  expect(response.status).toEqual(200);
+  expect(response.body).toEqual({
+    token: expect.any(String),
+  });
+});
 
 afterAll(async () => {
-    await app.close()
-})
+  await app.close();
+});

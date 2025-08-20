@@ -10,12 +10,12 @@ test("Get a courses", async () => {
 
   const titleId = randomUUID();
 
-  const { token } = await makeAuthenticatedUser('manager')
+  const { token } = await makeAuthenticatedUser("manager");
   const course = await makeCourse(titleId);
 
   const response = await request(app.server)
     .get(`/courses?search=${titleId}`)
-    .set('Authorization', token)
+    .set("Authorization", token);
 
   expect(response.status).toEqual(200);
   expect(response.body).toEqual({
