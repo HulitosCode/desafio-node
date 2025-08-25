@@ -9,7 +9,6 @@
     "dev": "node --env-file .env --watch src/server.ts",
     "db:seed": "node --env-file .env src/database/seed.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate:prod": "dotenv -e .env drizzle-kit migrate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "docker:build": "docker build -t desafio-node .",
