@@ -7,4 +7,4 @@ RUN npm ci
 COPY . .
 
 EXPOSE 3333
-CMD ["node", "npm run db:migrate", "src/server.ts"]
+CMD ["node", "src/server.ts"]
